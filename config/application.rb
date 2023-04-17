@@ -20,8 +20,11 @@ Bundler.require(*Rails.groups)
 
 module LaobiaoBackend
   class Application < Rails::Application
+    config.tailsman = config_for(:tailsman)
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+
+    config.api_only = true
 
     # Configuration for the application, engines, and railties goes here.
     #
