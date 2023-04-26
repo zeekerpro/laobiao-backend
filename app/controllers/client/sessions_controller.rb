@@ -3,9 +3,21 @@ class Client::SessionsController < ClientController
   skip_before_action :authenticate_user, only: [:create]
 
   def create
+    sign_in(signin_params, :account)
+    return if performed?
+    render json: current_user, status: :ok
   end
 
-  def destroy
-  end
+  private
+
+    def signin_params
+      params.require(:user).permit(
+        :account,
+        :email,
+        :phone,
+        :username,
+        :password
+      )
+    end
 
 end
