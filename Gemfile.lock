@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/zeekerpro/laobiao_chat.git
+  revision: d2c92615d2458cb107b57fa160ca6a57791fabdf
+  specs:
+    laobiao_chat (0.1.0)
+      rails (>= 7.0.4.3)
+
+GIT
   remote: https://github.com/zeekerpro/tailsman.git
   revision: cb571df0da92ef5ae45b0f4fac70ac16cbc419d3
   specs:
@@ -204,6 +211,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   jsbundling-rails
+  laobiao_chat!
   pagy
   pg (~> 1.1)
   puma (~> 5.0)
