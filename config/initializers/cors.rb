@@ -27,4 +27,3 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
           max_age: 600
     end
 end
-
