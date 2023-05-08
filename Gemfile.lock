@@ -1,5 +1,6 @@
-PATH
-  remote: ../../tailsman
+GIT
+  remote: https://github.com/zeekerpro/tailsman.git
+  revision: cb571df0da92ef5ae45b0f4fac70ac16cbc419d3
   specs:
     tailsman (0.1.0)
       activesupport

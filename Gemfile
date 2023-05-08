@@ -51,7 +51,7 @@ gem "bootsnap", require: false
 # an approach for pagination [https://github.com/ddnexus/pagy]
 gem 'pagy'
 
-gem 'tailsman', path: '../../tailsman'
+gem 'tailsman', github: 'zeekerpro/tailsman'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
