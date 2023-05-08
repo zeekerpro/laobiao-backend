@@ -20,7 +20,6 @@ Bundler.require(*Rails.groups)
 
 module LaobiaoBackend
   class Application < Rails::Application
-    config.tailsman = config_for(:tailsman)
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
@@ -36,5 +35,8 @@ module LaobiaoBackend
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.tailsman = config_for(:tailsman)
+
   end
 end
