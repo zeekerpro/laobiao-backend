@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: https://github.com/zeekerpro/tailsman.git
-  revision: cb571df0da92ef5ae45b0f4fac70ac16cbc419d3
+  revision: 178aad671cc7f8b13a900a1a2455925e9f2c14df
   specs:
-    tailsman (0.1.0)
+    tailsman (0.1.1)
       activesupport
       jwt
       rack-cors
@@ -96,7 +96,7 @@ GEM
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
     date (3.3.3)
-    debug (1.7.2)
+    debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     erubi (1.12.0)
@@ -172,7 +172,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
-    reline (0.3.3)
+    reline (0.3.4)
       io-console (~> 0.5)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
@@ -218,7 +218,7 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.2)
   sprockets-rails
   stimulus-rails
-  tailsman!
+  tailsman (~> 0.1.1)!
   turbo-rails
   tzinfo-data
   web-console

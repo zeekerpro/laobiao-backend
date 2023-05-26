@@ -25,8 +25,13 @@ class User < ApplicationRecord
 
   validates :password, presence: true, length: { minimum: 6 }, confirmation: true, on: :create
 
-  scope :find_by_account, -> (account) {
+  # don't use first<or query like first> method in scope, because scope will return all records if where get nil
+  # https://stackoverflow.com/questions/21649804/activerecord-first-method-in-scope-returns-more-than-one-record
+  # scope :find_by_account, -> (account) {
+  #   where("username = :account OR phone = :account OR email = :account", { account: account }).first
+  # }
+  def self.find_by_account(account)
     where("username = :account OR phone = :account OR email = :account", { account: account }).first
-  }
+  end
 
 end

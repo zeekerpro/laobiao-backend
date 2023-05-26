@@ -51,13 +51,13 @@ gem "bootsnap", require: false
 # an approach for pagination [https://github.com/ddnexus/pagy]
 gem 'pagy'
 
-gem 'tailsman', github: 'zeekerpro/tailsman'
+gem 'tailsman', "~> 0.1.1", github: 'zeekerpro/tailsman'
+# gem 'tailsman', path: '../../../tailsman'
 
 gem 'laobiao_chat', github: 'zeekerpro/laobiao_chat'
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug"
 end
 
 group :development do
