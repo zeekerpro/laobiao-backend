@@ -92,6 +92,7 @@ GEM
       msgpack (~> 1.2)
     builder (3.2.4)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     crass (1.0.6)
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
@@ -99,6 +100,8 @@ GEM
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    dockerfile-rails (1.2.5)
+      rails
     erubi (1.12.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -134,6 +137,8 @@ GEM
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.14.3-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.14.3-x86_64-linux)
       racc (~> 1.4)
     pagy (6.0.3)
     pg (1.4.6)
@@ -172,6 +177,10 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redis (5.0.6)
+      redis-client (>= 0.9.0)
+    redis-client (0.14.1)
+      connection_pool
     reline (0.3.4)
       io-console (~> 0.5)
     sprockets (4.2.0)
@@ -203,6 +212,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   annotate
@@ -210,12 +220,14 @@ DEPENDENCIES
   bootsnap
   cssbundling-rails
   debug
+  dockerfile-rails (>= 1.2)
   jsbundling-rails
   laobiao_chat!
   pagy
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
+  redis (~> 5.0)
   sprockets-rails
   stimulus-rails
   tailsman (~> 0.1.1)!
