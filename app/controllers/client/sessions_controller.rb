@@ -2,6 +2,9 @@ class Client::SessionsController < ClientController
 
   skip_before_action :authenticate_user, only: [:create]
 
+  def me
+  end
+
   def create
     sign_in(signin_params, :account)
     return if performed?
