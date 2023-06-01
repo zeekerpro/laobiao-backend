@@ -27,4 +27,7 @@ test:
 
 production:
   <<: *default
+  origins:
+    - 'https://www.laobiao.us'
+    - 'https://laobiao.vercel.app'
 
