@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/zeekerpro/tailsman.git
-  revision: 178aad671cc7f8b13a900a1a2455925e9f2c14df
+  revision: 201d83f9a6fa6f6947daf7196c09897b835ec69b
   specs:
     tailsman (0.1.1)
       activesupport
