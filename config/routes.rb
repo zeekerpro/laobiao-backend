@@ -4,6 +4,6 @@ Rails.application.routes.draw do
     draw :client
   end
 
-  mount LaobiaoChat::Engine => "/chat"
+  mount Openai::Engine => "/chat"
 
 end
