@@ -54,8 +54,8 @@ gem 'pagy'
 gem 'tailsman', "~> 0.1.1", github: 'zeekerpro/tailsman'
 # gem 'tailsman', path: '../../../tailsman'
 
-# gem 'openai', "~> 0.1.0", github: 'zeekerpro/openai'
-gem 'openai', path: '../openai'
+gem 'openai', "~> 0.1.0", github: 'zeekerpro/openai'
+# gem 'openai', path: '../openai'
 
 group :development, :test do
   gem "debug"
