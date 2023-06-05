@@ -15,6 +15,12 @@ class User < ApplicationRecord
 
   has_secure_password :password, validations: true
 
+  has_many :referrals, foreign_key: :referrer_id
+  has_many :referrings, class_name: 'User', through: :referrals, source: :referred
+
+  has_one :referral, foreign_key: :referred_id
+  has_one :referrer, class_name: 'User', through: :referral, source: :referrer
+
   @@protected_attributes = [ :password, :password_digest, :username, :phone, :email ]
 
   validates :username, presence: false, uniqueness: true

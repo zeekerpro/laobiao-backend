@@ -9,4 +9,8 @@ scope module: :client do
 
   post 'signup', to: 'users#create'
 
+  resources :users, only: []  do
+    resources :referrals, only: [:create, :update ]
+  end
+
 end
