@@ -4,12 +4,19 @@ class Client::UsersController < ClientController
 
   def create
     @user = User.new(user_params)
-    render json: { error: 'Invalid referral code' }, status: :unprocessable_entity and return if params[:referral_code] && !User.find_by(referral_code: params[:referral_code])
+    referral = Referral.find_by(code: params[:user][:referral_code]) if params[:user][:referral_code]
 
-    user.referrer = User.find_by(referral_code: params[:referral_code])
-    @user.save ?
-      (render json: @user, status: :created) :
-      (render json: @user.errors, status: :unprocessable_entity)
+    render json: { error: 'Invalid referral code' }, status: :unprocessable_entity and return if !referral
+    render json: { error: 'Referral code has been used' }, status: :unprocessable_entity and return if referral.referred
+
+    @user.referral = referral
+
+    if @user.save
+      render json: @user, status: :created
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+
   end
 
   private
@@ -20,7 +27,7 @@ class Client::UsersController < ClientController
       :phone,
       :username,
       :password,
-      :password_confirmation,
+      :password_confirmation
     )
   end
 
