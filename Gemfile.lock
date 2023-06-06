@@ -1,19 +1,20 @@
 GIT
+  remote: https://github.com/zeekerpro/openai.git
+  revision: baec0353d29800abe1a1e2c3c40b1a4f9dcd9813
+  specs:
+    openai (0.1.0)
+      rails (>= 7.0.5)
+      ruby-openai (>= 0.1.0)
+
+GIT
   remote: https://github.com/zeekerpro/tailsman.git
-  revision: 201d83f9a6fa6f6947daf7196c09897b835ec69b
+  revision: ee166b02b66252d39698cdb8d68c2fd67d537b35
   specs:
     tailsman (0.1.1)
       activesupport
       jwt
       rack-cors
       rails
-
-PATH
-  remote: ../openai
-  specs:
-    openai (0.1.0)
-      rails (>= 7.0.5)
-      ruby-openai (>= 0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -83,11 +84,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    annotate (3.2.0)
-      activerecord (>= 3.2, < 8.0)
-      rake (>= 10.4, < 14.0)
     bcrypt (3.1.18)
-    bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -212,11 +209,6 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    web-console (4.2.0)
-      actionview (>= 6.0.0)
-      activemodel (>= 6.0.0)
-      bindex (>= 0.4.0)
-      railties (>= 6.0.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -227,14 +219,13 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  annotate
   bcrypt (~> 3.1.7)
   bootsnap
   cssbundling-rails
   debug
   dockerfile-rails (>= 1.2)
   jsbundling-rails
-  openai!
+  openai (~> 0.1.0)!
   pagy
   pg (~> 1.1)
   puma (~> 5.0)
@@ -245,7 +236,6 @@ DEPENDENCIES
   tailsman (~> 0.1.1)!
   turbo-rails
   tzinfo-data
-  web-console
 
 RUBY VERSION
    ruby 3.2.0p0

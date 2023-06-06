@@ -3,6 +3,7 @@ class Client::SessionsController < ClientController
   skip_before_action :authenticate_user, only: [:create]
 
   def me
+    render json: current_user, status: :ok
   end
 
   def create

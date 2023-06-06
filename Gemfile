@@ -51,27 +51,21 @@ gem "bootsnap", require: false
 # an approach for pagination [https://github.com/ddnexus/pagy]
 gem 'pagy'
 
-gem 'tailsman', "~> 0.1.1", github: 'zeekerpro/tailsman'
-# gem 'tailsman', path: '../../../tailsman'
-
-# gem 'openai', "~> 0.1.0", github: 'zeekerpro/openai'
-gem 'openai', path: '../openai'
-
 group :development, :test do
   gem "debug"
 end
 
-group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
+# group :development do
+#   # Use console on exceptions pages [https://github.com/rails/web-console]
+#   # gem "web-console"
+#   gem 'tailsman', "~> 0.1.1", path: '../../../tailsman'
+#   gem 'openai', path: '../openai'
+#   gem 'annotate'
+# end
 
-  gem 'annotate'
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+group :production do
+  gem 'tailsman', "~> 0.1.1", github: 'zeekerpro/tailsman'
+  gem 'openai', "~> 0.1.0", github: 'zeekerpro/openai'
 end
 
 gem "dockerfile-rails", ">= 1.2", :group => :development

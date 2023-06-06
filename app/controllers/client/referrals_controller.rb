@@ -1,7 +1,7 @@
 class Client::ReferralsController < ClientController
 
-  befeore_action :check_user, only: [:create]
-  befeore_action :set_referral, only: [:update]
+  before_action :check_user, only: [:create]
+  before_action :set_referral, only: [:update]
 
   def create
     return if performed?
