@@ -58,13 +58,13 @@ end
 # group :development do
 #   # Use console on exceptions pages [https://github.com/rails/web-console]
 #   # gem "web-console"
-#   gem 'tailsman', "~> 0.1.1", path: '../../../tailsman'
+#   gem 'tailsman', path: '../../../tailsman'
 #   gem 'openai', path: '../openai'
 #   gem 'annotate'
 # end
 
 group :production do
-  gem 'tailsman', "~> 0.1.1", github: 'zeekerpro/tailsman'
+  gem 'tailsman', "~> 0.1.3", github: 'zeekerpro/tailsman'
   gem 'openai', "~> 0.1.0", github: 'zeekerpro/openai'
 end
 
