@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: referrals
+#
+#  id          :bigint           not null, primary key
+#  code        :string           not null
+#  referred_id :bigint
+#  referrer_id :bigint           not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
 class Referral < ApplicationRecord
 
   belongs_to :referred, class_name: 'User', optional: true

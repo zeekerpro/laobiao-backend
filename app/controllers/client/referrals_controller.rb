@@ -1,13 +1,17 @@
 class Client::ReferralsController < ClientController
 
-  before_action :check_user, only: [:create]
   before_action :set_referral, only: [:update]
+
+  def index
+    @referrals = current_user.referrals
+    render json: @referrals, status: :ok
+  end
 
   def create
     return if performed?
-    @referral = Referral.new(referrer: @user)
+    @referral = Referral.new(referrer: current_user)
     if @referral.save
-      render json: { referral: @referral }, status: :created
+      render json: Referral.all, status: :created
     else
       render json: { error: @referral.errors.full_messages }, status: :unprocessable_entity
     end
@@ -19,11 +23,6 @@ class Client::ReferralsController < ClientController
   end
 
   private
-
-    def check_user
-      @user = User.find(params[:user_id])
-      render json: { error: 'User not found' }, status: :not_found unless @user
-    end
 
     def set_referral
       @referral = Referral.find(params[:id])
