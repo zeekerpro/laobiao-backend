@@ -38,5 +38,15 @@ module LaobiaoBackend
 
     config.tailsman = config_for(:tailsman)
 
+    # override the engines models and controllers
+    overrides = Rails.root.join("app", "overrides", "**", "*.rb")
+    Rails.autoloaders.main.ignore(overrides)
+
+    config.to_prepare do
+      Dir.glob(overrides).each do |override|
+        load override
+      end
+    end
+
   end
 end

@@ -55,18 +55,18 @@ group :development, :test do
   gem "debug"
 end
 
-# group :development do
-#   # Use console on exceptions pages [https://github.com/rails/web-console]
-#   # gem "web-console"
-#   gem 'tailsman', path: '../../../tailsman'
-#   gem 'openai', path: '../openai'
-#   gem 'annotate'
-# end
-
-group :production do
-  gem 'tailsman', "~> 0.1.3", github: 'zeekerpro/tailsman'
-  gem 'openai', "~> 0.1.0", github: 'zeekerpro/openai'
+group :development do
+  # Use console on exceptions pages [https://github.com/rails/web-console]
+  # gem "web-console"
+  gem 'tailsman', path: '../../../tailsman'
+  gem 'openai', path: '../openai'
+  gem 'annotate'
 end
+
+# group :production do
+#   gem 'tailsman', "~> 0.1.3", github: 'zeekerpro/tailsman'
+#   gem 'openai', "~> 0.1.0", github: 'zeekerpro/openai'
+# end
 
 gem "dockerfile-rails", ">= 1.2", :group => :development
 

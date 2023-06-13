@@ -4,6 +4,5 @@ Rails.application.routes.draw do
     draw :client
   end
 
-  mount Openai::Engine => "/chat"
 
 end
