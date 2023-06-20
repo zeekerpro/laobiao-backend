@@ -3,6 +3,7 @@ class Client::ReferralsController < ClientController
   before_action :set_referral, only: [:update]
 
   def index
+    authorize :referral, :index?, policy_class: Client::ReferralPolicy
     @referrals = current_user.referrals
     render json: @referrals, status: :ok
   end
