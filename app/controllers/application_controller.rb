@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
 
   # protect_from_forgery with: :null_session
 
+  before_action :snakify_params
+
   include Tailsman
 
   include Pundit::Authorization
@@ -12,6 +14,10 @@ class ApplicationController < ActionController::Base
 
     def access_denied
       render json: { error: 'Access denied' }, status: :forbidden
+    end
+
+    def snakify_params
+      params.deep_transform_keys! &:underscore
     end
 
 end
