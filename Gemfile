@@ -49,10 +49,24 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # an approach for pagination [https://github.com/ddnexus/pagy]
-gem 'pagy'
+# gem 'pagy'
+# For automatic ActiveRecord pagination
+gem 'kaminari'
+
+# json api suit
+gem 'graphiti-rails'
+gem "responders"
 
 group :development, :test do
   gem "debug"
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'graphiti_spec_helpers'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 group :development do

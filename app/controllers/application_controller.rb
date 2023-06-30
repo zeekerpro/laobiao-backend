@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
 
   include Pundit::Authorization
 
+  # support :json, :xml, :jsonapi
+  include Graphiti::Rails::Responders
+
   rescue_from Pundit::NotAuthorizedError, with: :access_denied
 
   private

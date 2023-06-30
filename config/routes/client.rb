@@ -1,5 +1,4 @@
-
-scope module: :client do
+scope module: :client, defaults: {format: :jsonapi} do
 
   root 'welcome#index'
 
@@ -9,7 +8,8 @@ scope module: :client do
 
   post 'signup', to: 'users#create'
 
-  resources :referrals, only: [ :index, :create, :update ]
+  resources :referrals
+  resources :users
 
   mount Openai::Engine => "/openai"
 

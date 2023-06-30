@@ -2,34 +2,46 @@ class Client::UsersController < ClientController
 
   skip_before_action :authenticate_user, only: [ :create ]
 
+  def show
+    user = UserResource.find(params)
+    respond_with(user)
+  end
+
   def create
-    @user = User.new(user_params)
+    user = UserResource.build(params)
+
     referral = Referral.find_by(code: params[:user][:referral_code]) if params[:user][:referral_code]
 
     render json: { error: 'Invalid referral code' }, status: :unprocessable_entity and return if !referral
     render json: { error: 'Referral code has been used' }, status: :unprocessable_entity and return if referral.referred
 
-    @user.referral = referral
+    user.referral = referral
 
-    if @user.save
-      render json: @user, status: :created
+    if user.save
+      render jsonapi: user, status: :created
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render jsonapi_errors: user
     end
-
   end
 
-  private
+  def update
+    user = UserResource.find(params)
 
-  def user_params
-    params.require(:user).permit(
-      :email,
-      :phone,
-      :username,
-      :password,
-      :password_confirmation
-    )
+    if user.update_attributes
+      render jsonapi: user
+    else
+      render jsonapi_errors: user
+    end
   end
 
+  def destroy
+    user = UserResource.find(params)
+
+    if user.destroy
+      render jsonapi: { meta: {} }, status: 200
+    else
+      render jsonapi_errors: user
+    end
+  end
 
 end

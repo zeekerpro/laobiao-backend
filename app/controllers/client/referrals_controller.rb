@@ -1,32 +1,41 @@
 class Client::ReferralsController < ClientController
-
-  before_action :set_referral, only: [:update]
-
   def index
-    authorize :referral, :index?, policy_class: Client::ReferralPolicy
-    @referrals = current_user.referrals
-    render json: @referrals, status: :ok
+    referrals = ReferralResource.all(params)
+    respond_with(referrals)
+  end
+
+  def show
+    referral = ReferralResource.find(params)
+    respond_with(referral)
   end
 
   def create
-    return if performed?
-    @referral = Referral.new(referrer: current_user)
-    if @referral.save
-      render json: Referral.all, status: :created
+    referral = ReferralResource.build(params)
+
+    if referral.save
+      render jsonapi: referral, status: 201
     else
-      render json: { error: @referral.errors.full_messages }, status: :unprocessable_entity
+      render jsonapi_errors: referral
     end
   end
 
   def update
-    @referral.update_attribute(:referred, current_user)
-    render json: { referral: @referral }, status: :ok
+    referral = ReferralResource.find(params)
+
+    if referral.update_attributes
+      render jsonapi: referral
+    else
+      render jsonapi_errors: referral
+    end
   end
 
-  private
+  def destroy
+    referral = ReferralResource.find(params)
 
-    def set_referral
-      @referral = Referral.find(params[:id])
+    if referral.destroy
+      render jsonapi: { meta: {} }, status: 200
+    else
+      render jsonapi_errors: referral
     end
-
+  end
 end
