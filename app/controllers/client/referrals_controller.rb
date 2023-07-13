@@ -1,4 +1,5 @@
 class Client::ReferralsController < ClientController
+
   def index
     referrals = ReferralResource.all(params)
     respond_with(referrals)

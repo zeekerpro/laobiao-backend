@@ -22,7 +22,7 @@ class Referral < ApplicationRecord
   before_validation :generate_code, on: :create
 
   def generate_code
-    self.code = SecureRandom.hex(6)
+    self.code = SecureRandom.hex(6) if self.code.blank?
   end
 
 end

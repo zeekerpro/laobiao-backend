@@ -53,8 +53,6 @@ gem "bootsnap", require: false
 # For automatic ActiveRecord pagination
 gem 'kaminari'
 
-# json api suit
-gem 'graphiti-rails'
 gem "responders"
 
 group :development, :test do
@@ -74,12 +72,16 @@ group :development do
   # gem "web-console"
   gem 'tailsman', path: '../../../tailsman'
   gem 'openai', path: '../openai'
+  gem 'graphiti-rails', path: '../graphiti-rails'
+  gem 'graphiti', path: '../graphiti'
   gem 'annotate'
 end
 
 # group :production do
 #   gem 'tailsman', "~> 0.1.3", github: 'zeekerpro/tailsman'
 #   gem 'openai', "~> 0.1.0", github: 'zeekerpro/openai'
+#   gem 'graphiti-rails', "~> 0.4.0", github: 'zeekerpro/graphiti-rails'
+#   gem 'graphiti', "~> 1.3.9", github: 'zeekerpro/graphiti'
 # end
 
 gem "dockerfile-rails", ">= 1.2", :group => :development
