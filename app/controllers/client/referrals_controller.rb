@@ -5,14 +5,14 @@ class Client::ReferralsController < ClientController
   def index
     authorize :referral, :index?, policy_class: Client::ReferralPolicy
     @referrals = current_user.referrals
-    render json: @referrals, status: :ok
+    render json: @referrals, include: [:referred], status: :ok
   end
 
   def create
     return if performed?
     @referral = Referral.new(referrer: current_user)
     if @referral.save
-      render json: Referral.all, status: :created
+      render json: @referral, include: [:referred], status: :created
     else
       render json: { error: @referral.errors.full_messages }, status: :unprocessable_entity
     end
