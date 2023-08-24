@@ -3,7 +3,7 @@ class Client::SessionsController < ClientController
   skip_before_action :authenticate_user, only: [:create]
 
   def me
-    render json: current_user, status: :ok
+    render json: current_user, except: [:password_digest, :wechat_open_id], status: :ok
   end
 
   def create
