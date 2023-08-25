@@ -7,8 +7,8 @@ app = "laobiao-backend"
 primary_region = "hkg"
 console_command = "/rails/bin/rails console"
 
-[env]
-  RAILS_ENV = "production"
+# [env]
+#   RAILS_ENV = "production"
 
 [http_service]
   internal_port = 3000
