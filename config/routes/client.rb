@@ -11,6 +11,8 @@ scope module: :client do
 
   resources :referrals, only: [ :index, :create, :update ]
 
-  mount Openai::Engine => "/openai"
+  resources :chats do
+    post 'stream', on: :collection
+  end
 
 end

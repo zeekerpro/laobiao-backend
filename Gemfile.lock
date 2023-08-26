@@ -1,14 +1,5 @@
-GIT
-  remote: https://github.com/zeekerpro/openai.git
-  revision: 1651be73640ba1a318e6ba78625ceb02f892e737
-  specs:
-    openai (0.1.0)
-      rails (>= 7.0.5)
-      ruby-openai (>= 0.1.0)
-
-GIT
-  remote: https://github.com/zeekerpro/tailsman.git
-  revision: 7aef90a38f576a2bf147780efde34a0ad1fc5c9a
+PATH
+  remote: ../../../tailsman
   specs:
     tailsman (0.1.4)
       activesupport
@@ -234,16 +225,16 @@ DEPENDENCIES
   debug
   dockerfile-rails (>= 1.2)
   jsbundling-rails
-  openai (~> 0.1.0)!
   pagy
   pg (~> 1.1)
   puma (~> 5.0)
   pundit (~> 2.3)
   rails (~> 7.0.4, >= 7.0.4.2)
   redis (~> 5.0)
+  ruby-openai
   sprockets-rails
   stimulus-rails
-  tailsman (~> 0.1.3)!
+  tailsman!
   turbo-rails
   tzinfo-data
 

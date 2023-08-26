@@ -51,13 +51,12 @@ gem "bootsnap", require: false
 # an approach for pagination [https://github.com/ddnexus/pagy]
 gem 'pagy'
 
+gem "ruby-openai"
 
 if ENV.fetch("RAILS_ENV", "development") == "development"
   gem 'tailsman', path: '../../../tailsman'
-  gem 'openai', path: '../openai'
 else
   gem 'tailsman', "~> 0.1.3", github: 'zeekerpro/tailsman'
-  gem 'openai', "~> 0.1.0", github: 'zeekerpro/openai'
 end
 
 
