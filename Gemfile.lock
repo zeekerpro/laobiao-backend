@@ -1,7 +1,7 @@
 PATH
   remote: ../../../tailsman
   specs:
-    tailsman (0.1.4)
+    tailsman (0.1.5)
       activesupport
       jwt
       rack-cors

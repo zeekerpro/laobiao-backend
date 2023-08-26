@@ -56,7 +56,7 @@ gem "ruby-openai"
 if ENV.fetch("RAILS_ENV", "development") == "development"
   gem 'tailsman', path: '../../../tailsman'
 else
-  gem 'tailsman', "~> 0.1.3", github: 'zeekerpro/tailsman'
+  gem 'tailsman', "~> 0.1.5", github: 'zeekerpro/tailsman'
 end
 
 
