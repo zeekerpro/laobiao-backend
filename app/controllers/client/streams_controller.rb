@@ -1,10 +1,10 @@
-class Client::ChatsController < ClientController
+class Client::StreamsController < ClientController
 
   skip_before_action :authenticate_user, only: [:stream]
 
   include ActionController::Live
 
-    def stream
+    def create
 
       client = OpenAI::Client.new(
         access_token: Rails.application.credentials.openai.api_key,

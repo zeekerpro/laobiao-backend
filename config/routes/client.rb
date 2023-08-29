@@ -11,8 +11,6 @@ scope module: :client do
 
   resources :referrals, only: [ :index, :create, :update ]
 
-  resources :chats do
-    post 'stream', on: :collection
-  end
+  resources :streams, only: [:create]
 
 end
