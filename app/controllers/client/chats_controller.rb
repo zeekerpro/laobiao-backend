@@ -5,6 +5,7 @@ class Client::ChatsController < ClientController
   include ActionController::Live
 
     def stream
+
       client = OpenAI::Client.new(
         access_token: Rails.application.credentials.openai.api_key,
         uri_base: "https://oai.hconeai.com/",

@@ -14,30 +14,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_02_154115) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "openai_accounts", force: :cascade do |t|
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "openai_api_keys", force: :cascade do |t|
-    t.bigint "openai_account_id", null: false
-    t.string "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["openai_account_id"], name: "index_openai_api_keys_on_openai_account_id"
-  end
-
-  create_table "openai_chats", force: :cascade do |t|
-    t.bigint "openai_api_key_id", null: false
-    t.string "name"
-    t.text "prompt"
-    t.string "model"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["openai_api_key_id"], name: "index_openai_chats_on_openai_api_key_id"
-  end
-
   create_table "referrals", force: :cascade do |t|
     t.string "code", null: false
     t.bigint "referred_id"
@@ -61,8 +37,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_02_154115) do
     t.index ["username"], name: "index_users_on_username"
   end
 
-  add_foreign_key "openai_api_keys", "openai_accounts"
-  add_foreign_key "openai_chats", "openai_api_keys"
   add_foreign_key "referrals", "users", column: "referred_id"
   add_foreign_key "referrals", "users", column: "referrer_id"
 end
