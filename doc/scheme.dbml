@@ -38,7 +38,7 @@ Table messages {
   id bigint [pk, increment]
   chat_id bigint [ref: - chats.id, not null]
   content text
-  model_name string
+  role varchar
   created_at datetime [not null]
   updated_at datetime [not null]
 }

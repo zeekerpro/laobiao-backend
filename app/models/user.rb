@@ -21,6 +21,8 @@ class User < ApplicationRecord
   has_one :referral, foreign_key: :referred_id
   has_one :referrer, class_name: 'User', through: :referral, source: :referrer
 
+  has_many :chats
+
   @@protected_attributes = [ :password, :password_digest, :username, :phone, :email ]
 
   validates :username, presence: false, uniqueness: true
