@@ -21,4 +21,6 @@ scope module: :client do
 
   resources :api_keys
 
+  resources :discords, only: [:create]
+
 end

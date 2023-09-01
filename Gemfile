@@ -53,6 +53,8 @@ gem 'pagy'
 
 gem "ruby-openai"
 
+gem 'discordrb'
+
 if ENV.fetch("RAILS_ENV", "development") == "development"
   gem 'tailsman', path: '../../../tailsman'
 else
