@@ -55,6 +55,8 @@ gem "ruby-openai"
 
 gem 'discordrb'
 
+gem 'twitter'
+
 if ENV.fetch("RAILS_ENV", "development") == "development"
   gem 'tailsman', path: '../../../tailsman'
 else

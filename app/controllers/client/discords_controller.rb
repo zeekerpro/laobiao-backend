@@ -6,7 +6,7 @@ class Client::DiscordsController < ClientController
       title: test title
       youtube: https://www.youtube.com/watch?v=9bZkp7q19f0
     "
-    Bot.send_message(ChannelID, message)
+    Intergrations::Discord::Bot.send_message(Intergrations::Discord::ChannelID, message)
   end
 
 end
