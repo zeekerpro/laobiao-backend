@@ -1,11 +1,46 @@
 class Client::MessagesController < ClientController
+
+  before_action :set_chat
+
   before_action :set_message, only: %i[ show update destroy ]
+
+  # post /chats/:chat_id/messages/sync_detect
+  # 同步检测
+  # 1. 检测服务端是否有客户端未存储的聊天记录
+  # 2. 检测客户端是否有服务端未存储的聊天记录
+  def sync_detect
+    client_indexed_db_ids = params[:ids]
+    messages = @chat.messages
+    stored_indexed_db_ids = messages.map(&:indexed_db_id)
+
+    unstored_message_ids = client_indexed_db_ids - stored_indexed_db_ids
+    uncached_message_ids = stored_indexed_db_ids - client_indexed_db_ids
+
+    render json: { unstored_message_ids: unstored_message_ids, uncached_message_ids: uncached_message_ids}
+  end
+
+  def bulk_create
+    messages = params[:messages]
+    store_messages = messages.map do |msg|
+      {
+        chat_id: @chat.id,
+        content: msg[:content],
+        role: msg[:role],
+        indexed_db_id: msg[:id],
+        created_at: msg[:created_at] || Time.now,
+        updated_at: msg[:updated_at] || Time.now
+      }
+    end
+    Message.insert_all(store_messages)
+    render json: { status: :ok }
+  end
 
   # GET /messages
   def index
-    @messages = Message.all
-
-    render json: @messages
+    @messages = @chat.messages
+    render json: @messages.map { |message|
+      message.as_json.merge({ id: message.indexed_db_id })
+    }
   end
 
   # GET /messages/1
@@ -39,6 +74,11 @@ class Client::MessagesController < ClientController
   end
 
   private
+
+    def set_chat
+      @chat = current_user.chats.find_by(indexed_db_id: params[:chat_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_message
       @message = Message.find(params[:id])

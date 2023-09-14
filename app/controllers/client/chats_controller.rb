@@ -2,6 +2,9 @@ class Client::ChatsController < ClientController
 
   before_action :set_chat, only: %i[ show update destroy ]
 
+  # 同步检测
+  # 1. 检测服务端是否有客户端未存储的聊天记录
+  # 2. 检测客户端是否有服务端未存储的聊天记录
   def sync_detect
     client_indexed_db_ids = params[:ids]
     chats = current_user.chats
@@ -41,8 +44,8 @@ class Client::ChatsController < ClientController
         api_key_id: chat[:api_key_id] || ApiKey.default.id,
         name: chat[:name],
         indexed_db_id: chat[:id],
-        created_at: chat[:created_at],
-        updated_at: chat[:updated_at]
+        created_at: chat[:created_at] || Time.now,
+        updated_at: chat[:updated_at] || Time.now
       }
     end
     Chat.insert_all(store_chats)

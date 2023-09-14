@@ -14,7 +14,10 @@ scope module: :client do
   resources :streams, only: [:create]
 
   resources :chats do
-    resources :messages, on: :member
+    resources :messages, on: :member do
+      post 'sync_detect', on: :collection
+      post 'bulk_create', on: :collection
+    end
     post 'sync_detect', on: :collection
     post 'bulk_create', on: :collection
   end
