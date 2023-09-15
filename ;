@@ -56,7 +56,6 @@ class Client::MessagesController < ClientController
     @message.save
     # TODO
     get_openai_response_job = GetOpenaiResponseJob.perform_async(@chat.id)
-    head :ok
   end
 
   # PATCH/PUT /messages/1

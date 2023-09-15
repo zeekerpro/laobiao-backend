@@ -41,7 +41,7 @@ class Client::ChatsController < ClientController
     store_chats = chats.map do |chat|
       {
         user_id: current_user.id,
-        api_key_id: chat[:api_key_id] || ApiKey.default.id,
+        api_key_id: chat[:api_key_id] || ApiKey.default.id ,
         name: chat[:name],
         indexed_db_id: chat[:id],
         created_at: chat[:created_at] || Time.now,
@@ -49,12 +49,15 @@ class Client::ChatsController < ClientController
       }
     end
     Chat.insert_all(store_chats)
-    render json: { status: :ok }
+    head :ok
   end
 
   # POST /chats
   def create
-    @chat = Chat.new(chat_params)
+    @chat = Chat.new(chat_params.except(:id).merge(
+      user: current_user,
+      indexed_db_id: chat_params[:id]
+    ))
 
     if @chat.save
       render json: @chat, status: :created, location: @chat
@@ -80,11 +83,11 @@ class Client::ChatsController < ClientController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_chat
-      @chat = Chat.find(params[:id])
+      @chat = Chat.find_by(indexed_db_id: params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def chat_params
-      params.require(:chat).permit(:user_id, :api_key_id, :name, :created_at, :updated_at)
+      params.require(:chat).permit(:id, :api_key_id, :name, :created_at, :updated_at)
     end
 end

@@ -15,4 +15,8 @@ class Message < ApplicationRecord
 
   enum role: { system: 'system', assistant: 'assistant', user: 'user' }
 
+  validates :indexed_db_id, presence: true
+
+  validates :role, presence: true, inclusion: { in: roles.keys }
+
 end
