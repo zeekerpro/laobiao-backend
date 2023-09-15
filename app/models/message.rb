@@ -12,4 +12,7 @@
 #
 class Message < ApplicationRecord
   belongs_to :chat
+
+  enum role: { system: 'system', assistant: 'assistant', user: 'user' }
+
 end

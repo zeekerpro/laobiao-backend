@@ -28,7 +28,7 @@ gem "stimulus-rails"
 gem "cssbundling-rails"
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+# gem "redis", "~> 5.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -53,6 +53,10 @@ gem 'pagy'
 
 gem "ruby-openai"
 
+# Simple, efficient background processing using Redis.
+# https://github.com/sidekiq/sidekiq
+gem "sidekiq", "~> 7.0.9"
+
 if ENV.fetch("RAILS_ENV", "development") == "development"
   gem 'tailsman', path: '../../../tailsman'
 else
@@ -71,7 +75,5 @@ group :development do
 end
 
 gem "dockerfile-rails", ">= 1.2", :group => :development
-
-gem "redis", "~> 5.0"
 
 gem "pundit", "~> 2.3"

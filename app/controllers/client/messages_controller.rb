@@ -39,7 +39,10 @@ class Client::MessagesController < ClientController
   def index
     @messages = @chat.messages
     render json: @messages.map { |message|
-      message.as_json.merge({ id: message.indexed_db_id })
+      message.as_json.merge({
+        id: message.indexed_db_id,
+        chat_id: @chat.indexed_db_id
+      })
     }
   end
 
