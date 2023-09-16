@@ -63,9 +63,9 @@ else
   gem 'tailsman', "~> 0.1.5", github: 'zeekerpro/tailsman'
 end
 
-
 group :development, :test do
   gem "debug"
+  gem "solargraph-rails", require: false
 end
 
 group :development do
