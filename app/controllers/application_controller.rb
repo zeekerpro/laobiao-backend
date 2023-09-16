@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
 
   before_action :snakify_params
 
-  include Tailsman
-
   include Pundit::Authorization
 
   rescue_from Pundit::NotAuthorizedError, with: :access_denied

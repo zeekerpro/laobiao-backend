@@ -42,4 +42,8 @@ class User < ApplicationRecord
     where("username = :account OR phone = :account OR email = :account", { account: account }).first
   end
 
+  def is_admin?
+    self.id == 1
+  end
+
 end

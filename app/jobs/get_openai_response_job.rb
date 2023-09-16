@@ -1,5 +1,7 @@
-class GetOpenaiResponseJob
-  include Sidekiq::Job
+class GetOpenaiResponseJob < ApplicationJob
+  queue_as :default
+
+  # include Sidekiq::Job
 
   def perform(chat_id:)
     chat = Chat.find(chat_id)
