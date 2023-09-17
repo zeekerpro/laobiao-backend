@@ -1,6 +1,8 @@
 class RouteConstraints
 
   class << self
+    # todo: please use hotwire to create login page,
+    # and then use this method to check if the user is admin after login
     def is_admin?(request, auth_model = :user)
       token_info = request.env[:tailsman_token_info]
       current_id = token_info[:id]
