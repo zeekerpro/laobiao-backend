@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   # end
 
+  # mount ActionCable.server => '/cable'
+  mount ActionCable.server => '/cable'
+
   defaults format: :json do
     draw :client
   end

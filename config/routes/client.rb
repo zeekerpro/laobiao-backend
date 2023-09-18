@@ -24,4 +24,5 @@ scope module: :client do
 
   resources :api_keys
 
+
 end

@@ -1,8 +1,6 @@
 class GetOpenaiResponseJob < ApplicationJob
   queue_as :default
 
-  # include Sidekiq::Job
-
   def perform(chat_id:)
     chat = Chat.find(chat_id)
     call_openai(chat: chat)
@@ -41,7 +39,8 @@ class GetOpenaiResponseJob < ApplicationJob
     proc do | chunk, _bytesize |
       new_content = chunk.dig("choices", 0, "delta", "content")
       response_message.update(content:  response_message.content + new_content) if new_content
-      puts response_message.content
+
+      ActionCable.server.broadcast("openai", { data: new_content })
     end
   end
 

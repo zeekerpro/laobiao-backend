@@ -54,8 +54,7 @@ class Client::MessagesController < ClientController
       role: 'user'
     ))
     @message.save
-    # TODO
-    get_openai_response_job = GetOpenaiResponseJob.perform_now(chat_id: @chat.id)
+    GetOpenaiResponseJob.perform_now(chat_id: @chat.id)
     head :ok
   end
 
