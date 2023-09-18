@@ -19,13 +19,9 @@ class GetOpenaiResponseJob < ApplicationJob
       uri_base: "https://oai.hconeai.com/",
       request_timeout: 240,
       extra_headers: {
-        # For https://github.com/6/openai-caching-proxy-worker#specifying-a-cache-ttl
         "X-Proxy-TTL" => "43200",
-        # For https://github.com/6/openai-caching-proxy-worker#refreshing-the-cache
         "X-Proxy-Refresh": "true",
-        # For https://docs.helicone.ai/getting-started/integration-method/openai-proxy
         "Helicone-Auth": "Bearer #{Rails.application.credentials.helicorn.api_key}",
-        # Use this with Helicone otherwise streaming drops chunks # https://github.com/alexrudall/ruby-openai/issues/251
         "helicone-stream-force-format" => "true",
       }
     )

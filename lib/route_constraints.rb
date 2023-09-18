@@ -5,6 +5,10 @@ class RouteConstraints
     # and then use this method to check if the user is admin after login
     def is_admin?(request, auth_model = :user)
       token_info = request.env[:tailsman_token_info]
+
+      # todo: redirect to login page if token_info is nil
+      return false if token_info.blank?
+
       current_id = token_info[:id]
       return false if current_id.blank?
       model_constant = auth_model.to_s.capitalize.constantize

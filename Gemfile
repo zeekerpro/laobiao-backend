@@ -77,3 +77,5 @@ end
 gem "dockerfile-rails", ">= 1.2", :group => :development
 
 gem "pundit", "~> 2.3"
+
+gem "foreman"

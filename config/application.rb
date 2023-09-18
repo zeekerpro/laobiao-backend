@@ -36,11 +36,9 @@ module LaobiaoBackend
     # Don't generate system test files.
     config.generators.system_tests = nil
 
-    config.tailsman = config_for(:tailsman)
-
     config.active_job.queue_adapter = :sidekiq
-    config.active_job.queue_name_prefix = "laobiao_backend_#{Rails.env}"
-    config.active_job.queue_name_delimiter = "."
+    # config.active_job.queue_name_prefix = "laobiao_backend_#{Rails.env}"
+    # config.active_job.queue_name_delimiter = "."
 
    end
 end
