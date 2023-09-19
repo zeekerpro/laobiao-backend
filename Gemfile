@@ -60,7 +60,7 @@ gem "sidekiq", "~> 7.0.9"
 if ENV.fetch("RAILS_ENV", "development") == "development"
   gem 'tailsman', path: '../../../tailsman'
 else
-  gem 'tailsman', "~> 0.1.5", github: 'zeekerpro/tailsman'
+  gem 'tailsman', "~> 0.2.0", github: 'zeekerpro/tailsman'
 end
 
 group :development, :test do
