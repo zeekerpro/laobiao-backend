@@ -23,7 +23,8 @@ module LaobiaoBackend
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
-    # config.api_only = true
+    # Please, see https://guides.rubyonrails.org/autoloading_and_reloading_constants.html#config-autoload-lib-ignore.
+    config.autoload_lib(ignore: %w(assets tasks))
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -35,10 +36,5 @@ module LaobiaoBackend
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
-    config.active_job.queue_adapter = :sidekiq
-    # config.active_job.queue_name_prefix = "laobiao_backend_#{Rails.env}"
-    # config.active_job.queue_name_delimiter = "."
-
-   end
+  end
 end
