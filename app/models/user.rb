@@ -27,11 +27,17 @@ class User < ApplicationRecord
 
   validates :username, presence: false, uniqueness: true
 
+  normalizes :phone, with: -> phone { phone.gsub(/\D+/, '') }
   validates :phone, presence: false, uniqueness: true, length: { is: 11 }
 
+  normalizes :email, with: -> email { email.strip.downcase }
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   validates :password, presence: true, length: { minimum: 6 }, confirmation: true, on: :create
+  # https://edgeguides.rubyonrails.org/7_1_release_notes.html#add-activerecord-base-generates-token-for
+  generates_token_for :password_reset, expires_in: 15.minutes do
+    password_salt&.last(10)
+  end
 
   # don't use first<or query like first> method in scope, because scope will return all records if where get nil
   # https://stackoverflow.com/questions/21649804/activerecord-first-method-in-scope-returns-more-than-one-record
