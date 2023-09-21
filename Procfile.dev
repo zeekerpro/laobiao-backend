@@ -1,3 +1,4 @@
 web: env RUBY_DEBUG_OPEN=true bin/rails server -p 4000
 js: bun run build --watch
 worker: bundle exec sidekiq
+css: bun run build:css --watch
